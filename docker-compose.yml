@@ -1,0 +1,19 @@
+version: '3.0'
+services:
+  demo:
+    build: 
+      context: .
+    image: demo:0.0.1
+    ports: 
+      - 8080:8080
+    depends_on:
+      - db
+    links:
+      - db
+  db:
+    image: mariadb
+    environment:
+      - MARIADB_DATABASE=demo
+      - MARIADB_USER=demo
+      - MARIADB_PASSWORD=demo
+      - MARIADB_ROOT_PASSWORD=demo
